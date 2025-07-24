@@ -1,5 +1,8 @@
 import pymysql
 from pymysql import Error
+import os
+
+mariadb_root_password = os.environ.get('mariadb-root-password')
 
 class Database:
     def __init__(self):
@@ -11,7 +14,7 @@ class Database:
                 database='test',  # test 데이터베이스 사용
                 port=3306,
                 user='root',
-                password='Wjsdbqja156@',  # mariadb 설치 당시의 패스워드, 실제 환경에서는 보안을 위해 환경변수 등을 사용
+                password=mariadb_root_password,  # mariadb 설치 당시의 패스워드, 실제 환경에서는 보안을 위해 환경변수 등을 사용
                 charset='utf8mb4',
                 cursorclass=pymysql.cursors.DictCursor
             )
